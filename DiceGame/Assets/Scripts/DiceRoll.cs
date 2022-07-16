@@ -16,13 +16,16 @@ public class DiceRoll : MonoBehaviour
     public MMFeedbacks rollCube4;
     public MMFeedbacks rollCube5;
     public MMFeedbacks rollCube6;
+
+    public MMFeedbacks pauseWorld;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
     IEnumerator RollDice()
     {
+        PauseWorldRoll();
         yield return new WaitForSeconds(rolling);
         Roll();
     }
@@ -36,18 +39,17 @@ public class DiceRoll : MonoBehaviour
         }
         Debug.Log(diceNumber);
 
-        
+
     }
 
-    void Click()
+    public void rollRange()
     {
-         if (Input.GetMouseButtonDown(0))
         {
             diceNumber = Random.Range(1, 7);
             StartCoroutine(RollDice());
         }
         Debug.Log(diceNumber);
-    }    
+    }
 
     void Roll()
     {
@@ -71,7 +73,7 @@ public class DiceRoll : MonoBehaviour
                 break;
             case 5:
                 print("5y");
-                RollDiceFeels5(); 
+                RollDiceFeels5();
                 break;
             case 6:
                 print("6y");
@@ -83,6 +85,11 @@ public class DiceRoll : MonoBehaviour
         }
     }
 
+
+    public void PauseWorldRoll()
+    {
+        pauseWorld.PlayFeedbacks();
+    }
     public void RollDiceFeels6()
     {      
         rollCube6?.PlayFeedbacks();

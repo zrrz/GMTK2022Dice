@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CharacterMovement : MonoBehaviour
 {
+    [SerializeField] DiceRoll diceRoll;
 
     public float moveSpeed = 2f;
 
@@ -35,9 +37,21 @@ public class CharacterMovement : MonoBehaviour
             transform.localScale = new Vector3(move.x, 1f, 1f);
         }
 
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            diceRoll.rollRange();
+            moveSpeed = diceRoll.diceNumber;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            moveSpeed = 2f;
+        }
+
         // Changes the height position of the player..
         if (Input.GetButtonDown("Jump") && groundedPlayer)
         {
+            diceRoll.rollRange();
+            jumpHeight = diceRoll.diceNumber;
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
 
