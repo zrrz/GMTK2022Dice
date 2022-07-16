@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1641739826858083137}
   - component: {fileID: 1641739826858083151}
   - component: {fileID: 1641739826858083136}
+  - component: {fileID: 1790230083}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -31,8 +32,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1243583736771890844}
+  - {fileID: 543450652434220355}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1641739826858083151
 MonoBehaviour:
@@ -67,6 +69,131 @@ CharacterController:
   m_SkinWidth: 0.0001
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1790230083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641739826858083139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93a7e998292daf847b71936a3ea1120e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dice: {fileID: 0}
+  diceNumber: 0
+  rolling: 0
+  rollCube1: {fileID: 0}
+  rollCube2: {fileID: 0}
+  rollCube3: {fileID: 0}
+  rollCube4: {fileID: 0}
+  rollCube5: {fileID: 0}
+  rollCube6: {fileID: 0}
+--- !u!1001 &1308009128
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 1641739826858083137}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 545a79ffe7ffae1448795300efad7b93,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 545a79ffe7ffae1448795300efad7b93,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.032124043
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 545a79ffe7ffae1448795300efad7b93,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.6875362
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 545a79ffe7ffae1448795300efad7b93,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 545a79ffe7ffae1448795300efad7b93,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 545a79ffe7ffae1448795300efad7b93,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 545a79ffe7ffae1448795300efad7b93,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 545a79ffe7ffae1448795300efad7b93,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 545a79ffe7ffae1448795300efad7b93,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 545a79ffe7ffae1448795300efad7b93,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 545a79ffe7ffae1448795300efad7b93,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 545a79ffe7ffae1448795300efad7b93,
+        type: 3}
+      propertyPath: m_Name
+      value: dice
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 545a79ffe7ffae1448795300efad7b93, type: 3}
+--- !u!4 &543450652434220355 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 545a79ffe7ffae1448795300efad7b93,
+    type: 3}
+  m_PrefabInstance: {fileID: 1308009128}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &919132148181213177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 545a79ffe7ffae1448795300efad7b93,
+    type: 3}
+  m_PrefabInstance: {fileID: 1308009128}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1951406974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148181213177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93a7e998292daf847b71936a3ea1120e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dice: {fileID: 919132148181213177}
+  diceNumber: 0
+  rolling: 1
+  rollCube1: {fileID: 0}
+  rollCube2: {fileID: 0}
+  rollCube3: {fileID: 0}
+  rollCube4: {fileID: 0}
+  rollCube5: {fileID: 0}
+  rollCube6: {fileID: 0}
 --- !u!1001 &1641739826967390583
 PrefabInstance:
   m_ObjectHideFlags: 0
