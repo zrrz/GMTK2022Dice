@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    [SerializeField] DiceRoll diceRoll;
+    [SerializeField] private DiceRoll diceRoll;
 
     public float moveSpeed = 2f;
 
@@ -14,6 +14,8 @@ public class CharacterMovement : MonoBehaviour
     public bool groundedPlayer;
     public float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
+
+    [SerializeField] private Transform characterArt;
 
     void Start()
     {
@@ -34,7 +36,7 @@ public class CharacterMovement : MonoBehaviour
 
         if (move != Vector3.zero)
         {
-            transform.localScale = new Vector3(move.x, 1f, 1f);
+            characterArt.transform.localScale = new Vector3(move.x, 1f, 1f);
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
