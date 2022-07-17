@@ -29,25 +29,12 @@ public class DiceRoll : MonoBehaviour
         yield return new WaitForSeconds(rolling);
         Roll();
     }
-    // Update is called once per frame
-    void Update()
+
+    public void RollRange()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            diceNumber = Random.Range(1, 7);
-            StartCoroutine(RollDice());
-        }
-        Debug.Log(diceNumber);
+        diceNumber = Random.Range(1, 7);
+        StartCoroutine(RollDice());
 
-
-    }
-
-    public void rollRange()
-    {
-        {
-            diceNumber = Random.Range(1, 7);
-            StartCoroutine(RollDice());
-        }
         Debug.Log(diceNumber);
     }
 
@@ -79,9 +66,6 @@ public class DiceRoll : MonoBehaviour
                 print("6y");
                 RollDiceFeels6();
                 break;
-
-
-
         }
     }
 

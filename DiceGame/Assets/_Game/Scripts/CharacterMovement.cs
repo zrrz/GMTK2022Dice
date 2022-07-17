@@ -47,7 +47,7 @@ public class CharacterMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            diceRoll.rollRange();
+            diceRoll.RollRange();
             moveSpeed = diceRoll.diceNumber;
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
@@ -60,7 +60,7 @@ public class CharacterMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && groundedPlayer)
         {
            
-            diceRoll.rollRange();
+            diceRoll.RollRange();
             jumpHeight = diceRoll.diceNumber;
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }

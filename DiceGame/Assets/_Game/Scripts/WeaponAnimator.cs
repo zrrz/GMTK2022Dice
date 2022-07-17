@@ -41,7 +41,7 @@ public class WeaponAnimator : MonoBehaviour
     //[SerializeField] private AttackTransformData attackData = default;
 
     [SerializeField] private float damageAmount = 10f;
-
+    [SerializeField] private DiceRoll diceRoll;
     private Vector3 AttackStartPos => startTransform.localPosition;// attackData.startPosition + defaultPosition;
     private Vector3 AttackEndPos => endTransform.localPosition; //attackData.endPosition + defaultPosition;
     private Vector3 AttackStartDir => startTransform.localRotation * Vector3.forward;// startTransform.forward; //.startDirection;// + defaultRotation;
@@ -49,6 +49,10 @@ public class WeaponAnimator : MonoBehaviour
 
     private void Start()
     {
+        if(diceRoll == null)
+        {
+            diceRoll = FindObjectOfType<DiceRoll>();
+        }
         originalSwordTrail.emitting = false;
         weaponTransform.gameObject.SetActive(false);
         //swordDamageDealer.enabled = false;
@@ -84,6 +88,15 @@ public class WeaponAnimator : MonoBehaviour
         {
             return;
         }
+
+        diceRoll.RollRange();
+        damageAmount = diceRoll.diceNumber;
+
+        float t = (float)damageAmount / 6f;
+        weaponTransform.localScale = Vector3.Lerp(Vector3.one * .4f, Vector3.one * 2f, t);
+
+        attackTime = Mathf.Lerp(0.1f, 1.2f, t);
+
         attacking = true;
         //bool reverse = !lastWasReversed && (Time.time < lastAttackTime + comboTime) && lastAttackDirection == AttackDirection.Up;
         //lastWasReversed = reverse;
