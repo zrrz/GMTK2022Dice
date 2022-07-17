@@ -14,6 +14,7 @@ public class CharacterMovement : MonoBehaviour
     public bool groundedPlayer;
     public float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
+    private bool wasLanded = false;
 
     [SerializeField] private Transform characterArt;
 
@@ -22,6 +23,11 @@ public class CharacterMovement : MonoBehaviour
         characterController = GetComponent<CharacterController>();
     }
 
+    void OnLanded()
+    {
+        moveSpeed = 2f;
+    }
+   
     void Update()
     {
         groundedPlayer = characterController.isGrounded;
@@ -49,9 +55,11 @@ public class CharacterMovement : MonoBehaviour
             moveSpeed = 2f;
         }
 
+
         // Changes the height position of the player..
         if (Input.GetButtonDown("Jump") && groundedPlayer)
         {
+           
             diceRoll.rollRange();
             jumpHeight = diceRoll.diceNumber;
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
@@ -60,7 +68,7 @@ public class CharacterMovement : MonoBehaviour
         playerVelocity.y += gravityValue * Time.deltaTime;
         characterController.Move(playerVelocity * Time.deltaTime);
 
-        
+
 
         //if(x < 0f)
         //{
@@ -70,5 +78,10 @@ public class CharacterMovement : MonoBehaviour
         //{
         //    transform.localScale = new Vector3(1f, 1f, 1f);
         //}
+        if(characterController.isGrounded && !wasLanded)
+        {
+            OnLanded();
+        }
+        wasLanded = characterController.isGrounded;
     }
 }
