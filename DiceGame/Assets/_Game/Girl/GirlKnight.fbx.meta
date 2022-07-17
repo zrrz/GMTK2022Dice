@@ -2,7 +2,10 @@ fileFormatVersion: 2
 guid: 7f576eeb0334bf640bf42ef8aec7975d
 ModelImporter:
   serializedVersion: 22102
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 2921659094232983241
+    second: rig|PoseLib
   externalObjects:
   - first:
       type: UnityEngine:Material
