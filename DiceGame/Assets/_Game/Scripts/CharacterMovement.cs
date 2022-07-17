@@ -27,9 +27,28 @@ public class CharacterMovement : MonoBehaviour
     {
         moveSpeed = 2f;
     }
-   
+
+    private void OnGUI()
+    {
+        GUILayout.Label("R to restart\n" +
+            "WASD to move\n" +
+            "Esc to quit\n" +
+            "Space to jump\n" +
+            "Shift to sprint");
+        GUILayout.Label("Most actions roll a dice that effect speed and power");
+    }
+
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        }
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
         groundedPlayer = characterController.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
