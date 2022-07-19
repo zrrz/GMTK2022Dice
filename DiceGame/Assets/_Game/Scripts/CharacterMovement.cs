@@ -6,6 +6,7 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     [SerializeField] private DiceRoll diceRoll;
+    [SerializeField] private AnimationsControl animationControl;
 
     public float moveSpeed = 2f;
 
@@ -15,6 +16,8 @@ public class CharacterMovement : MonoBehaviour
     public float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
     private bool wasLanded = false;
+
+   
 
     [SerializeField] private Transform characterArt;
 
@@ -61,7 +64,12 @@ public class CharacterMovement : MonoBehaviour
 
         if (move != Vector3.zero)
         {
+            animationControl.Run();
             characterArt.transform.localScale = new Vector3(move.x, 1f, 1f);
+        }
+        else
+        {
+            animationControl.RunOff();
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
