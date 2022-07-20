@@ -86,11 +86,12 @@ public class CharacterMovement : MonoBehaviour
         // Changes the height position of the player..
         if (Input.GetButtonDown("Jump") && groundedPlayer)
         {
-           
+            animationControl.Jump();
             diceRoll.RollRange();
             jumpHeight = diceRoll.diceNumber;
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
+        
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         characterController.Move(playerVelocity * Time.deltaTime);
@@ -107,6 +108,7 @@ public class CharacterMovement : MonoBehaviour
         //}
         if(characterController.isGrounded && !wasLanded)
         {
+            animationControl.JumpOff();
             OnLanded();
         }
         wasLanded = characterController.isGrounded;

@@ -26,4 +26,15 @@ public class AnimationsControl : MonoBehaviour
         thisAnim.SetBool("Run", false);
     }
 
+    public void Jump()
+    {
+        thisAnim.SetBool("Jump", true);
+    }
+
+    public void JumpOff()
+    {
+        thisAnim.SetBool("Jump", false);
+    }
+
+
 }
