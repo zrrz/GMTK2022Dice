@@ -5,6 +5,7 @@ using MoreMountains.Feedbacks;
 
 public class DiceRoll : MonoBehaviour
 {
+    [SerializeField] LoadedDice loadedDice;
     public GameObject dice;
     public int diceNumber;
 
@@ -23,47 +24,47 @@ public class DiceRoll : MonoBehaviour
     {
 
     }
-    IEnumerator RollDice()
+    IEnumerator RollDice(int rolledNumber)
     {
         PauseWorldRoll();
         yield return new WaitForSeconds(rolling);
-        Roll();
+        Roll(rolledNumber);
     }
 
     public void RollRange()
     {
         diceNumber = Random.Range(1, 7);
-        StartCoroutine(RollDice());
+       
+        StartCoroutine(RollDice(diceNumber));
+        if (loadedDice.diceActive == true)
+        {
+            diceNumber += loadedDice.diceNumberExtra;
+            loadedDice.SetDiceActive(false);
+        }
 
-        Debug.Log(diceNumber);
+        //Debug.Log(diceNumber);
     }
 
-    void Roll()
+    void Roll(int rolledNumber)
     {
-        switch (diceNumber)
+        switch (rolledNumber)
         {
             case 1:
                 RollDiceFeels1();
-                print("1y");
                 break;
             case 2:
                 RollDiceFeels2();
-                print("2y");
                 break;
             case 3:
                 RollDiceFeels3();
-                print("3y");
                 break;
             case 4:
                 RollDiceFeels4();
-                print("4y");
                 break;
             case 5:
-                print("5y");
                 RollDiceFeels5();
                 break;
             case 6:
-                print("6y");
                 RollDiceFeels6();
                 break;
         }

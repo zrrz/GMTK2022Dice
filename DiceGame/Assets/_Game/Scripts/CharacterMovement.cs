@@ -7,6 +7,7 @@ public class CharacterMovement : MonoBehaviour
 {
     [SerializeField] private DiceRoll diceRoll;
     [SerializeField] private AnimationsControl animationControl;
+    [SerializeField] private LoadedDice loadedDice;
 
     public float moveSpeed = 2f;
 
@@ -17,8 +18,6 @@ public class CharacterMovement : MonoBehaviour
     private float gravityValue = -9.81f;
     private bool wasLanded = false;
 
-   
-
     [SerializeField] private Transform characterArt;
 
     void Start()
@@ -28,7 +27,9 @@ public class CharacterMovement : MonoBehaviour
 
     void OnLanded()
     {
-        moveSpeed = 2f;
+        diceRoll.RollRange();
+        moveSpeed = diceRoll.diceNumber;
+       //moveSpeed = 2f;
     }
 
     private void OnGUI()
@@ -43,6 +44,8 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("move speed it " + moveSpeed);
+
         if(Input.GetKeyDown(KeyCode.R))
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
@@ -51,6 +54,22 @@ public class CharacterMovement : MonoBehaviour
         {
             Application.Quit();
         }
+  
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            diceRoll.RollRange();
+            moveSpeed = diceRoll.diceNumber;
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            diceRoll.RollRange();
+            moveSpeed = diceRoll.diceNumber;
+        }
+
+       
+
+      
 
         groundedPlayer = characterController.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
@@ -72,18 +91,7 @@ public class CharacterMovement : MonoBehaviour
             animationControl.RunOff();
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            diceRoll.RollRange();
-            moveSpeed = diceRoll.diceNumber;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            moveSpeed = 2f;
-        }
-
-
-        // Changes the height position of the player..
+     // Changes the height position of the player..
         if (Input.GetButtonDown("Jump") && groundedPlayer)
         {
             animationControl.Jump();
