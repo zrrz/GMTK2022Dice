@@ -9,6 +9,8 @@ public class LoadedDice : MonoBehaviour
 
     [SerializeField] private GameObject visuals;
 
+    [SerializeField] private float coolDown;
+
     public GameObject extraDice;
     public GameObject diceHolder;
     public float rolling;
@@ -22,6 +24,9 @@ public class LoadedDice : MonoBehaviour
     public MMFeedbacks rollExtraCube4;
     public MMFeedbacks rollExtraCube5;
     public MMFeedbacks rollExtraCube6;
+
+    public float coolDownTimer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,8 +44,13 @@ public class LoadedDice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {           
+        if (coolDownTimer > 0f)
+        {
+            coolDownTimer -= Time.deltaTime;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift) && coolDownTimer <= 0)
+        {
+            coolDownTimer = coolDown;
             RollRangeExtra();
             SetDiceActive(true);
            // diceRoll.RollRange();
